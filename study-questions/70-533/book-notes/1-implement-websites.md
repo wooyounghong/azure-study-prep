@@ -87,3 +87,5 @@
             - Get-AzureWebsite is the cmdlet used to get a list of the websites in a current subscription or configuration settings for a specified website
             - Restart-AzureWebsite is cmdlet used to stop and then restart a specified website
             - Show-AzureWebsite is cmdlet you can use to launch a browser and navigate to the URL of a spefied website
+
+## 1.2

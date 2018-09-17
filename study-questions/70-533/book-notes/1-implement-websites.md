@@ -1,12 +1,12 @@
-## Chapter 1: Implement Websites
+# Chapter 1: Implement Websites
 
 - Microsoft Azure Websites = fully managed platform-as-a-services (PaaS)
   - enables:
     - build, deploy, scale enterprise-grade web apps in seconds
 
-## 1.1 Deploy Websites
+# 1.1 Deploy Websites
 
-    Objectives:
+    ***Objectives***
       - Create Azure Website
       - Define deployment slots
       - Publish an application
@@ -14,12 +14,12 @@
       - Define and deploy WebJobs
 
       ## Create Azure Website
-        - create unique DNS name (specifying the region the website will run, adds additional resources such as Microsoft Azure SQL Database or Microsoft Azure Storage Account)
+        - creates unique DNS name (specifying the region the website will run, adds additional resources such as Microsoft Azure SQL Database or Microsoft Azure Storage Account)
         - Can be created with following tools:
           - Microsoft Azure management portal
           - Azure PowerShell cmdlets
             - What is Azure Powershell?
-              * command-line tool that is more powerufl
+              * command-line tool that is more powerful
               * Azure PowerShell programmers use preset scripts called cmdlets to perform tasks such as...
                 - provisioning virtual machines (VMs)
                 - creating cloud services
@@ -43,7 +43,13 @@
                          $wsProduction = 'Production'
                          Switch-AzureWebsiteSlot -Name $wsName -Slot1 $wsStaging -Slot2 $wsProduction`
         ****** Why do we need to swap? Can't we just update ? Why make the swap from Staging to Production but back to Prodution to Staging for older version?
-          - For rollback purposes ! but why?
+          - For rollback purposes!
+
+      ## Deploying Web Jobs
+        - A WebJob is an application or script that can be run as a background task in Azure website
+        - A WebJob can be configured as On-Demand, Continuously Running, or Scheduled Task
+          - If deployed as On-Demand or Continuously Running Task,
+            * You only need to specify the name of WebJob, and path to the .zip file
 
       ## Publishing an Azure Website
         - Process in which web app (or code) is copied to one of the deployment slots
@@ -88,4 +94,30 @@
             - Restart-AzureWebsite is cmdlet used to stop and then restart a specified website
             - Show-AzureWebsite is cmdlet you can use to launch a browser and navigate to the URL of a spefied website
 
-## 1.2
+# 1.2 Configure Websites
+
+<!-- 1.2 Configure Web Apps from book -->
+
+**_ Objectives _**
+
+- Configure Site Settings
+- Configure custom domains
+- Configure SSL certificates
+- Configure Microsoft Azure Traffic Manager
+- Configure handler mappings
+- Configure virtual applications and directories
+- Use the Azure Cross-Platform Command-Line Interface Tools for Configuration tasks
+
+## Configure Site Settings
+
+### Connection Strings and Application Settings
+
+- Connection Strings: Unique Way to provide connection string setting to database rather than creating webconfig file || a string that specifies information about a data source and the means of connecting to it
+  - SQL Database: A connection string for an Azure SQL database
+  - SQL Server: A connection string for a SQL server running ona physical machine or Azure Virtual Machine
+  - mySQL: A connection string for MySQL database
+  - Custom: A connection string for NoSQL storage option such as Azure storage account
+- Site settings for connection strings and application settings are defined as key/value pairs;
+  - Example:
+
+    - Key = "NowOrLaterDBConnectionStr" Value = "Server=tcp:noworlater.database.windows.net, 1433:Database=noworlater-database; User ID=AdminUser@noworlater; Password={myPW}; Trusted_Connection=False; Encrypt=True; Connection Timeout=30;"
